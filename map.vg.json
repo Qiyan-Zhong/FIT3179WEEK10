@@ -26,6 +26,31 @@
     },
 
     {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -12,
+        "fontSize": 11.5,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "text": {"field": "Country", "type": "nominal"},
+        "color": {"value": "black"},
+        "opacity": {
+          "condition": {
+            "test": "datum['Country'] == 'Spain' || datum['Country'] == 'France'",
+            "value": 1
+          },
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "Team", "type": "nominal"}
+        ]
+      }
+    },
+
+    {
       "data": {
         "url": "https://raw.githubusercontent.com/Qiyan-Zhong/FIT3179-Week8/main/stadiums_20150302.csv"
       },
@@ -41,11 +66,11 @@
             "Capacity_Range": {
               "input": "range",
               "min": 0,
-              "max": 200000,
+              "max": 100000,
               "step": 10000
             }
           },
-          "init": { "Capacity_Range": 30000 }
+          "init": { "Capacity_Range": 0 }
         }
       },
 
@@ -74,4 +99,6 @@
       }
     }
   ]
+  
+  
 }
