@@ -9,6 +9,31 @@
   "data": {
     "url": "https://raw.githubusercontent.com/Qiyan-Zhong/FIT3179Week9HW/main/fifa_ranking(1).csv"
   },
+  "params": [
+    {
+      "name": "Continent_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Brazil",
+          "England",
+          "France",
+          "Germany",
+          "Spain"
+        ],
+        "labels":[
+          "Show All",
+          "Brazil",
+          "England",
+          "France",
+          "Germany",
+          "Spain"
+        ],
+        "name": "Continent Selection: "
+      }
+    }
+  ],
 
   "transform": [
     {
@@ -19,7 +44,8 @@
         "field": "country_full",
         "oneOf": ["England", "France", "Germany", "Brazil", "Spain"]
       }
-    }
+    },
+    {"filter": "Continent_selection == null || datum.country_full == Continent_selection"}
   ],
   "mark": { "type": "line", "tooltip": true, "point": true },
   "selection": {
@@ -44,6 +70,11 @@
     "opacity": {
       "condition": { "selection": "rank", "value": 1 },
       "value": 0.2
-    }
+    },
+    "tooltip":[
+      {"field":"rank_date","type":"temporal","title": "Date"},
+      {"field":"rank","type":"quantitative"},
+      {"field":"country_full","type":"nominal","title": "Country"}
+    ]
   }
 }
