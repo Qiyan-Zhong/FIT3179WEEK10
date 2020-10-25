@@ -7,14 +7,17 @@
     "fontSize": 25
   },
   "data": {
-    "url": "fifa_ranking(1).csv"
+    "url": "https://raw.githubusercontent.com/Qiyan-Zhong/FIT3179Week9HW/main/fifa_ranking(1).csv"
   },
 
   "transform": [
     {
+      "filter":"year(datum.rank_date)>=2008"
+    },
+    {
       "filter": {
         "field": "country_full",
-        "oneOf": ["England", "France", "Germany", "Scotland", "Spain"]
+        "oneOf": ["England", "France", "Germany", "Brazil", "Spain"]
       }
     }
   ],
